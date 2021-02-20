@@ -25,11 +25,12 @@ $(function () {
     // 3、处理通用的异常情况
     // 服务器响应结束时触发
     option.complete = function (res) {
-      console.log(res.responseJSON);
+      var obj = res.responseJSON
+      console.log(obj);
       // 完成请求后，结束进度条
       window.NProgress && window.NProgress.done()
       // 处理失败的情况
-      if (res.responseJSON && res.responseJSON.status === 401 && res.responseJSON.message === '身份认证失败！') {
+      if (obj && obj.status === 401 && obj.message === '身份认证失败！') {
         // 把无效的token清除
         localStorage.removeItem('mytoken')
         // 如果身份验证失败了，就跳转到登录页面
