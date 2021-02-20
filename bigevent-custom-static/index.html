@@ -183,8 +183,8 @@
       <!-- 焦点图 -->
       <div class="kr_banner">
         <div class="slides layui-carousel" lay-filter="kr_carousel" id="kr_carousel">
-          <ul carousel-item>
-            <li class="img-effect">
+          <ul carousel-item class="lbt">
+            <!-- <li class="img-effect">
               <a href="javascript:;">
                 <img src="./uploads/banner_1.png" alt="">
               </a>
@@ -214,7 +214,7 @@
               <a href="javascript:;">
                 <img src="./uploads/banner_6.png" alt="">
               </a>
-            </li>
+            </li> -->
           </ul>
         </div>
         <!-- 其它 -->
@@ -1065,6 +1065,18 @@
       </div>
     </div>
   </div>
+  <!-- 模板引擎 -->
+  <script src="./assets/template-web.js"></script>
+  <!-- 定义轮播图的模板 -->
+  <script type="text/html" id="tpl-lbt">
+    {{each data}}
+    <li class="img-effect">
+      <a href="javascript:;">
+        <img src="{{'http://localhost:8888/uploads/' + $value.swiperimg}}">
+      </a>
+    </li>
+  {{/each}}
+  </script>
   <script src="./assets/jquery/jquery-3.5.1.min.js"></script>
   <script src="./assets/layui/layui.js"></script>
   <script src="./js/common.js"></script>
@@ -1081,5 +1093,6 @@
       });
     });
   </script>
+  <script src="./js/lunbotu.js"></script>
 </body>
 </html>
