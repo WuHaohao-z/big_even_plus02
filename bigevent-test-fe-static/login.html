@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>登录页面</title>
+  <!-- 导入layui样式文件 -->
+  <link rel="stylesheet" type="text/css" href="/assets/lib/layui/css/layui.css">
+  <!-- 导入本页面的css -->
+  <link rel="stylesheet" type="text/css" href="/assets/css/login.css">
+</head>
+
+<body>
+    <!-- 大背景 -->
+  <div class="layui-container">
+    <div class="admin-login-background">
+        <!-- 登录模块 -->
+      <div class="login-form">
+        <form class="layui-form" action="">
+          <div class="layui-form-item logo-title">
+            <h1>大事件后台管理系统</h1>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-icon layui-icon-username" for="username"></label>
+            <input type="text" name="username" lay-verify="required|account" placeholder="用户名或者邮箱" autocomplete="off" class="layui-input" value="">
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-icon layui-icon-password" for="password"></label>
+            <input type="password" name="password" lay-verify="required|password" placeholder="密码" autocomplete="off" class="layui-input" value="">
+          </div>
+          <div class="layui-form-item">
+            <button class="layui-btn layui-btn layui-btn-normal layui-btn-fluid" lay-submit="" lay-filter="login">登 入</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 导入jquery和jquery插件 -->
+  <script type="text/javascript" src="/assets/lib/jquery.js"></script>
+  <script type="text/javascript" src="/assets/lib/jquery.particleground.min.js"></script>
+  <!-- 导入接口文档 -->
+  <script type="text/javascript" src="/assets/js/common.js"></script>
+  <!-- 导入layui -->
+  <script type="text/javascript" src="/assets/lib/layui/layui.all.js"></script>
+  <!-- 导入本页面的js -->
+  <script type="text/javascript" src="/assets/js/login.js"></script>
+  
+</body>
+
+</html>
