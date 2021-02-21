@@ -8,7 +8,13 @@ $(function () {
       if (value !== uname) {
         return '两次输入的密码不一样'
       }
-    }
+    },
+    nickname: function (value) {
+      if (value.length > 6) {
+          return '昵称长度必须在1 ~ 6 个字符之间!'
+      }
+  }
+
   })
 
   // 绑定添加用户表单提交事件
@@ -25,3 +31,10 @@ $(function () {
     })
   })
 })
+
+// 点击跳转
+// $('.layui-btn').click(function(){
+//   setInterval(function(){
+//     location.href = '/user/user.html'
+//   },1500)
+// })

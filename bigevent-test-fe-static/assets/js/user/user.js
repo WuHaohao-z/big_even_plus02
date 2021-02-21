@@ -6,6 +6,30 @@ $(function () {
   var pagenum = 1
   // 每页显示的条数
   var pagesize = 3
+ var q = {
+   pagenum :1,
+   pagesize:2,
+   cate_id : "",
+   state:"",
+ }
+ function initTable() {
+  $.ajax({
+      method: 'GET',
+      url: 'admin/users',
+      data: q,
+      success: function (res) {
+          // console.log(res);
+          if (res.status !== 0) {
+              return layer.msg('获取文章列表失败')
+          }
+          //使用模版引擎渲染页面
+          var tags = template('table-tpl', res)
+          $('.layui-table tbody').html(tags)
+           // 调用渲染分页的方法
+           loadUserList()
+      }
+  })
+}
 
   // 加载用户列表
   function loadUserList (param) {
@@ -62,21 +86,30 @@ $(function () {
  
   // 删除用户
   $('.layui-table tbody').on('click', '.layui-btn-danger', function (e) {
+   // 获取删除按钮的个数
+   var len = $('.layui-btn-danger').length
+    console.log(len);
     var id = $(e.target).data('id')
     layer.confirm('确认要删除用户吗？', function (index) {
       $.ajax({
         type: 'delete',
         url: 'admin/users/' + id,
         success: function (res) {
+          // 优化
+          if(res.status !== 0){
+            return layer.msg('删除文章失败！')
+          }
           layer.msg(res.message)
-          loadUserList({
-            // 页码：必须从1开始
-            pagenum: pagenum,
-            // 每页显示多少条数据
-            pagesize: pagesize
-          })
+          if (len === 1) {
+            // 如果 len 的值等于1，证明删除完毕之后，页面上就没有任何数据了
+            // 页码值最小必须是 1
+            q.pagenum = q.pagenum === 1 ? 1 : q.pagenum - 1
+          }
+       initTable()
+    
         }
       })
+      // layer.close(index);
     })
   })
 

@@ -31,6 +31,10 @@ $(function () {
         layer.msg(res.message)
       }
     })
+    setInterval(function(){
+           location.href = '/user/user.html'
+        },1500)
   })
 
 })
+
