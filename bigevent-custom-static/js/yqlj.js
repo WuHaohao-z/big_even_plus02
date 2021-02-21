@@ -9,7 +9,7 @@ $(function(){
               res.data.forEach(function (item) {
                 arr.push(`
                   <dd>
-                    <a href="javascript:;">
+                    <a href="${item.linkurl}" target="blank">
                       <img src="${'http://localhost:8888/uploads/' + item.linkicon}" alt="${item.linkname}">
                     </a>
                   </dd>
